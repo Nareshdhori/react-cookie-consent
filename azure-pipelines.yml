@@ -20,11 +20,8 @@ steps:
     npm run build
   displayName: 'npm install and build'
 
-- task: AzureFunctionApp@2
+- task: PublishBuildArtifacts@1
   inputs:
-    azureSubscription: 'Pay-As-You-Go (3633dc9e-7b49-4ad7-a790-118e9d968962)'
-    appType: 'functionApp'
-    appName: 'windowsfunctionappsmall'
-    package: '$(Build.ArtifactStagingDirectory)'
-    deploymentMethod: 'auto'
-
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
